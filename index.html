@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="WinWin Fan Hub — 董思成 Fan Resource Center" />
+  <title>WINWIN Fan Hub — 董思成</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" id="navbar">
+    <div class="container nav-inner">
+      <a class="nav-logo" onclick="navigateTo('home')">WIN<span>WIN</span></a>
+      <ul class="nav-menu">
+        <li class="nav-menu-item">
+          <a class="nav-menu-link" onclick="navigateTo('home')">HOME</a>
+        </li>
+        <li class="nav-menu-item has-dropdown" data-dropdown="categories">
+          <button class="nav-menu-btn" onclick="navigateTo('categories')">
+            <span>CATEGORIES</span>
+            <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="dropdown" id="dropdown-categories">
+            <div class="dropdown-item" onclick="navigateTo('category','tv-series')">
+              <div class="dd-icon tv">🎬</div>
+              <div class="dd-text"><h4>TV Series</h4><p>影视剧</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('category','variety-shows')">
+              <div class="dd-icon variety">🎤</div>
+              <div class="dd-text"><h4>Variety Shows</h4><p>综艺节目</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('category','stage-focus')">
+              <div class="dd-icon stage">💃</div>
+              <div class="dd-text"><h4>Stage Focus</h4><p>舞台直拍</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('category','interview')">
+              <div class="dd-icon interview">📰</div>
+              <div class="dd-text"><h4>Interview</h4><p>采访对话</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('category','fan-made')">
+              <div class="dd-icon fan">🎨</div>
+              <div class="dd-text"><h4>Fan-made</h4><p>粉丝创作</p></div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-menu-item has-dropdown" data-dropdown="gallery">
+          <button class="nav-menu-btn" onclick="navigateTo('gallery-summary')">
+            <span>GALLERY</span>
+            <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="dropdown" id="dropdown-gallery">
+            <div class="dropdown-item" onclick="navigateTo('gallery','guzhuang')">
+              <div class="dd-icon guzhuang">👘</div>
+              <div class="dd-text"><h4>Period Costume</h4><p>古装</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('gallery','sifu')">
+              <div class="dd-icon sifu">👔</div>
+              <div class="dd-text"><h4>Casual Wear</h4><p>私服</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('gallery','hongtan')">
+              <div class="dd-icon hongtan">🌟</div>
+              <div class="dd-text"><h4>Red Carpet</h4><p>活动红毯</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('gallery','bizhi')">
+              <div class="dd-icon bizhi">🖼</div>
+              <div class="dd-text"><h4>HD Wallpapers</h4><p>高清壁纸</p></div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-menu-item has-dropdown" data-dropdown="about">
+          <button class="nav-menu-btn" onclick="navigateTo('about','profile')">
+            <span>ABOUT</span>
+            <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="dropdown" id="dropdown-about">
+            <div class="dropdown-item" onclick="navigateTo('about','profile')">
+              <div class="dd-icon profile">👤</div>
+              <div class="dd-text"><h4>Profile</h4><p>个人资料</p></div>
+            </div>
+            <div class="dropdown-item" onclick="navigateTo('about','guestbook')">
+              <div class="dd-icon guestbook">💌</div>
+              <div class="dd-text"><h4>Guestbook</h4><p>留言板</p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-right">
+        <button class="nav-icon-btn" onclick="toggleSearch()" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <div class="hamburger" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== SEARCH OVERLAY ========== -->
+  <div class="search-overlay" id="searchOverlay">
+    <button class="search-close" onclick="toggleSearch()">&times;</button>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search WinWin..." oninput="handleSearch(this.value)" />
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- ========== MOBILE NAV ========== -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" onclick="toggleMobileNav()">&times;</button>
+    <a onclick="navigateTo('home');toggleMobileNav()">HOME</a>
+    <div class="mobile-nav-group">CATEGORIES</div>
+    <a class="sub" onclick="navigateTo('category','tv-series');toggleMobileNav()">TV Series <span>影视剧</span></a>
+    <a class="sub" onclick="navigateTo('category','variety-shows');toggleMobileNav()">Variety Shows <span>综艺节目</span></a>
+    <a class="sub" onclick="navigateTo('category','stage-focus');toggleMobileNav()">Stage Focus <span>舞台直拍</span></a>
+    <a class="sub" onclick="navigateTo('category','interview');toggleMobileNav()">Interview <span>采访对话</span></a>
+    <a class="sub" onclick="navigateTo('category','fan-made');toggleMobileNav()">Fan-made <span>粉丝创作</span></a>
+    <div class="mobile-nav-group">GALLERY</div>
+    <a class="sub" onclick="navigateTo('gallery','guzhuang');toggleMobileNav()">Period Costume <span>古装</span></a>
+    <a class="sub" onclick="navigateTo('gallery','sifu');toggleMobileNav()">Casual Wear <span>私服</span></a>
+    <a class="sub" onclick="navigateTo('gallery','hongtan');toggleMobileNav()">Red Carpet <span>活动红毯</span></a>
+    <a class="sub" onclick="navigateTo('gallery','bizhi');toggleMobileNav()">HD Wallpapers <span>高清壁纸</span></a>
+    <div class="mobile-nav-group">ABOUT</div>
+    <a class="sub" onclick="navigateTo('about','profile');toggleMobileNav()">Profile <span>个人资料</span></a>
+    <a class="sub" onclick="navigateTo('about','guestbook');toggleMobileNav()">Guestbook <span>留言板</span></a>
+  </div>
+
+  <!-- ========== FULL-SCREEN GALLERY VIEWER ========== -->
+  <div class="gv" id="galleryViewer">
+    <button class="gv-close" onclick="closeGV()">&times;</button>
+    <button class="gv-prev" onclick="gvNav(-1)">&#8249;</button>
+    <button class="gv-next" onclick="gvNav(1)">&#8250;</button>
+    <div class="gv-main">
+      <img class="gv-img" id="gvImg" src="" alt="" />
+      <div class="gv-caption" id="gvCaption"></div>
+      <button class="gv-download" id="gvDownload" onclick="gvDownloadImage()">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        DOWNLOAD
+      </button>
+    </div>
+    <div class="gv-thumbs" id="gvThumbs"></div>
+    <div class="gv-side" id="gvSide"></div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="app"></main>
+
+  <script src="./data.js"></script>
+  <script>
+  /* =============================================
+     SPA ROUTER & RENDER ENGINE
+     ============================================= */
+
+  // State
+  let guestbookMessages = [];
+  let gvImages = [];
+  let gvIndex = 0;
+  let gvKey = '';
+  let infiniteScrollRAF = null;
+
+  // Router
+  function navigateTo(type, key) {
+    closeAllDropdowns();
+    if (type === 'home') window.location.hash = '';
+    else if (type === 'categories') window.location.hash = '#/categories';
+    else if (type === 'category') window.location.hash = '#/category/' + key;
+    else if (type === 'gallery-summary') window.location.hash = '#/gallery';
+    else if (type === 'gallery') window.location.hash = '#/gallery/' + key;
+    else if (type === 'about') window.location.hash = '#/about/' + key;
+  }
+
+  function parseHash() {
+    const h = window.location.hash.slice(1);
+    if (!h || h === '/') return { type: 'home', key: '' };
+    const parts = h.split('/').filter(Boolean);
+    if (parts[0] === 'categories') return { type: 'categories', key: '' };
+    if (parts[0] === 'category' && parts[1]) return { type: 'category', key: parts[1] };
+    if (parts[0] === 'gallery' && parts[1]) return { type: 'gallery', key: parts[1] };
+    if (parts[0] === 'gallery') return { type: 'gallery-summary', key: '' };
+    if (parts[0] === 'about' && parts[1]) return { type: 'about', key: parts[1] };
+    return { type: 'home', key: '' };
+  }
+
+  function handleRoute() {
+    const { type, key } = parseHash();
+    const app = document.getElementById('app');
+    window.scrollTo(0, 0);
+    if (infiniteScrollRAF) { cancelAnimationFrame(infiniteScrollRAF); infiniteScrollRAF = null; }
+    switch (type) {
+      case 'home': renderHome(app); break;
+      case 'categories': renderCategoriesPage(app); break;
+      case 'category': renderCategoryPage(app, key); break;
+      case 'gallery': renderGalleryPage(app, key); break;
+      case 'gallery-summary': renderGallerySummary(app); break;
+      case 'about': key === 'guestbook' ? renderGuestbookPage(app) : renderAboutPage(app); break;
+      default: renderHome(app);
+    }
+  }
+
+  window.addEventListener('hashchange', handleRoute);
+
+  /* ========== RENDER: HOME ========== */
+  function renderHome(app) {
+    app.innerHTML = `
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-bg">
+          <img src="images/hero-bg.jpg" alt="" class="hero-bg-img" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-left">
+            <h1 class="hero-title fade-up" style="animation-delay:.1s">WINWIN</h1>
+            <p class="hero-subtitle fade-up" style="animation-delay:.25s">Dong Sicheng· 董思成</p>
+            <p class="hero-desc fade-up" style="animation-delay:.4s">Actor · Singer · Dancer</p>
+            <div class="hero-tags fade-up" style="animation-delay:.48s">
+              <span class="hero-tag">✦ TV News</span>
+              <span class="hero-tag">97.10.28</span>
+              <span class="hero-tag">Stage Focus</span>
+              <span class="hero-tag">WinWin</span>
+              <span class="hero-tag">Fan Project</span>
+            </div>
+            <a class="hero-cta fade-up" style="animation-delay:.55s" onclick="navigateTo('categories')">
+              Explore Collection
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+          </div>
+          <div class="hero-right">
+<div class="hero-video-wrap" id="heroVideo">
+  <video autoplay muted playsinline loop preload="auto" id="heroVid">
+    <source src="./images/hero-video.mp4" type="video/mp4">
+  </video>
+</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BENTO: AIRED WORKS -->
+      <section class="section bento-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-label">Aired Works</div>
+            <h2 class="section-title">已播作品<span class="zh">Aired Film & TV</span></h2>
+          </div>
+          <div class="bento-grid">
+            ${AIRED_WORKS.map((w, i) => `
+              <div class="bento-card ${i === 0 ? 'bento-large' : ''}" onclick="navigateTo('category','${w.categoryKey}')" style="animation-delay:${i * 0.08}s">
+                <img class="bento-card-img" src="${w.cover}" alt="${w.title}" loading="lazy" />
+                <div class="bento-card-overlay">
+                  <div class="bento-card-year">${w.year}</div>
+                  <div class="bento-card-title">${w.titleEn}</div>
+                  <div class="bento-card-zh">${w.title}</div>
+                  <div class="bento-card-role">${w.roleEn} / ${w.role}</div>
+                  <div class="bento-card-genre">${w.genre}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- BENTO: UPCOMING WORKS -->
+      <section class="section bento-section upcoming-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-label">Upcoming</div>
+            <h2 class="section-title">待播作品<span class="zh">Upcoming Works</span></h2>
+          </div>
+          <div class="bento-grid bento-grid-upcoming">
+            ${UPCOMING_WORKS.map((w, i) => `
+              <div class="bento-card" onclick="navigateTo('category','${w.categoryKey}')" style="animation-delay:${i * 0.08}s">
+                <img class="bento-card-img" src="${w.cover}" alt="${w.title}" loading="lazy" />
+                <div class="bento-card-overlay">
+                  <div class="bento-card-year">${w.year}</div>
+                  <div class="bento-card-title">${w.titleEn}</div>
+                  <div class="bento-card-zh">${w.title}</div>
+                  <div class="bento-card-role">${w.roleEn} / ${w.role}</div>
+                  <div class="bento-card-genre">${w.genre}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY INFINITE SCROLL -->
+      <section class="section gallery-scroll-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-label">Gallery</div>
+            <h2 class="section-title">Photo Gallery<span class="zh">精选美图</span></h2>
+          </div>
+        </div>
+        <div class="gallery-scroll-wrap" id="galleryScrollWrap">
+          <div class="gallery-scroll-track" id="galleryScrollTrack">
+            ${buildInfiniteScrollCards()}
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      ${renderFooter()}
+    `;
+
+    initHero();
+    initHeroVideo();
+    initReveal();
+    initInfiniteScroll();
+  }
+
+  /* Build infinite scroll card HTML (duplicated for seamless loop) */
+  function buildInfiniteScrollCards() {
+    const cards = ALL_GALLERY_IMAGES.map((img, idx) => `
+      <div class="gs-card" onclick="openGVFromHome('${img.categoryKey}',${idx})">
+        <img src="${img.src}" alt="${img.labelZh}" loading="lazy" />
+        <div class="gs-card-info">
+          <div class="gs-card-cat">${img.categoryName}</div>
+          <div class="gs-card-label">${img.labelEn}</div>
+          <div class="gs-card-zh">${img.labelZh}</div>
+        </div>
+      </div>
+    `).join('');
+    return cards + cards;
+  }
+
+  /* ========== RENDER: CATEGORIES PAGE ========== */
+  function renderCategoriesPage(app) {
+    app.innerHTML = `
+      <div class="page container page-enter">
+        <div class="breadcrumb">
+          <a onclick="navigateTo('home')">Home</a><span class="sep">/</span>
+          <span>Categories</span>
+        </div>
+        <div class="section-header" style="text-align:left;margin-bottom:32px">
+          <div class="section-label">Categories</div>
+          <h2 class="section-title">All Categories<span class="zh">全部分类</span></h2>
+        </div>
+        <div class="cat-grid">
+          ${CATEGORY_CARDS.map(c => `
+            <div class="cat-card" onclick="navigateTo('category','${c.key}')">
+              <img class="cat-card-img" src="${c.cover}" alt="${c.name}" loading="lazy" />
+              <div class="cat-card-body">
+                <div class="cat-card-label">${c.label}</div>
+                <div class="cat-card-name">${c.name}</div>
+                <div class="cat-card-zh">${c.nameZh}</div>
+                <div class="cat-card-count">${c.count}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  /* ========== RENDER: CATEGORY SUB PAGE ========== */
+  function renderCategoryPage(app, key) {
+    const data = CONTENT[key];
+    if (!data) { navigateTo('home'); return; }
+    const items = data.items || [];
+    app.innerHTML = `
+      <div class="page container page-enter">
+        <div class="breadcrumb">
+          <a onclick="navigateTo('home')">Home</a><span class="sep">/</span>
+          <a onclick="navigateTo('categories')">Categories</a><span class="sep">/</span>
+          <span>${data.title}</span>
+        </div>
+        <div class="section-header" style="text-align:left;margin-bottom:12px">
+          <div class="section-label">${data.title}</div>
+          <h2 class="section-title">${data.title}<span class="zh">${data.subtitle}</span></h2>
+        </div>
+        <p style="color:var(--text-secondary);font-size:.9rem;margin-bottom:28px;max-width:600px">${data.desc}</p>
+        <div class="content-grid">
+          ${items.map(item => `
+            <div class="content-card" onclick="window.open('${item.url}','_blank')">
+              <div style="position:relative;overflow:hidden">
+                <img class="content-card-img" src="${item.cover}" alt="${item.title}" loading="lazy" />
+                <div class="content-card-hover-overlay">
+                  <span style="color:#fff;font-weight:700;font-size:.85rem">${item.title}</span>
+                </div>
+              </div>
+              <div class="content-card-body">
+                <div class="content-card-title">${item.title}</div>
+                <div class="content-card-intro">${item.intro}</div>
+                <span class="content-card-link">Watch Now &rarr;</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  /* ========== RENDER: GALLERY SUMMARY ========== */
+  function renderGallerySummary(app) {
+    app.innerHTML = `
+      <div class="page container page-enter">
+        <div class="breadcrumb">
+          <a onclick="navigateTo('home')">Home</a><span class="sep">/</span>
+          <span>Gallery</span>
+        </div>
+        <div class="section-header" style="text-align:left;margin-bottom:12px">
+          <div class="section-label">Gallery</div>
+          <h2 class="section-title">Gallery<span class="zh">图片集</span></h2>
+        </div>
+        <p style="color:var(--text-secondary);font-size:.9rem;margin-bottom:36px;max-width:600px">Click a category to browse full photo collections.</p>
+        <div class="gallery-summary-grid">
+          ${GALLERY_CARDS.map(card => {
+            const data = CONTENT[card.key];
+            const count = data && data.images ? data.images.length : 0;
+            return `
+              <div class="gallery-summary-card" onclick="navigateTo('gallery','${card.key}')">
+                <img src="${card.cover}" alt="${card.nameZh}" loading="lazy" />
+                <div class="gallery-summary-overlay">
+                  <span class="gallery-summary-count">${count}+</span>
+                </div>
+                <div class="gallery-summary-info">
+                  <div class="gallery-summary-name">${card.name}</div>
+                  <div class="gallery-summary-zh">${card.nameZh}</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  /* ========== RENDER: GALLERY SUB PAGE ========== */
+  function renderGalleryPage(app, key) {
+    const data = CONTENT[key];
+    if (!data) { navigateTo('gallery-summary'); return; }
+    const images = data.images || [];
+    app.innerHTML = `
+      <div class="page page-enter" style="padding-bottom:0">
+        <div class="container">
+          <div class="breadcrumb">
+            <a onclick="navigateTo('home')">Home</a><span class="sep">/</span>
+            <a onclick="navigateTo('gallery-summary')">Gallery</a><span class="sep">/</span>
+            <span>${data.title} ${data.subtitle}</span>
+          </div>
+          <div class="section-header" style="text-align:left;margin-bottom:12px">
+            <div class="section-label">${data.title}</div>
+            <h2 class="section-title">${data.title}<span class="zh">${data.subtitle}</span></h2>
+          </div>
+          <p style="color:var(--text-secondary);font-size:.9rem;margin-bottom:28px;max-width:600px">${data.desc}</p>
+        </div>
+        <div class="gallery-sub-grid">
+          ${images.map((img, i) => `
+            <div class="gsf-item" onclick="openGV('${key}',${i})">
+              <img src="${img.src}" alt="${img.labelZh}" loading="lazy" />
+              <div class="gsf-overlay">
+                <div class="gsf-label-en">${img.labelEn}</div>
+                <div class="gsf-label-zh">${img.labelZh}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  /* ========== RENDER: ABOUT PROFILE ========== */
+  function renderAboutPage(app) {
+    const d = ABOUT_DATA;
+    app.innerHTML = `
+      <div class="page container page-enter">
+        <div class="breadcrumb">
+          <a onclick="navigateTo('home')">Home</a><span class="sep">/</span>
+          <a onclick="navigateTo('about','profile')">About</a><span class="sep">/</span>
+          <span>Profile</span>
+        </div>
+        <div class="profile-hero">
+          <div class="profile-photo">
+            <img src="${d.photo}" alt="${d.stageName}" />
+          </div>
+          <div class="profile-info">
+            <h1 class="profile-name">${d.nameEn}<span class="stage">${d.stageName} / ${d.nameKo}</span></h1>
+            <p class="profile-bio">${d.profile}</p>
+            <div class="profile-tags">
+              <span class="profile-tag">✦ Idol News</span>
+              <span class="profile-tag">971028</span>
+              <span class="profile-tag">🎂 ${d.birthday}</span>
+              <span class="profile-tag">📍 ${d.birthplace}</span>
+              <span class="profile-tag">🏢 ${d.agency}</span>
+              <span class="profile-tag">🎵 ${d.group}</span>
+              <span class="profile-tag">🎓 ${d.education}</span>
+              <span class="profile-tag">📏 ${d.height}</span>
+              <span class="profile-tag">💡 ${d.mbti}</span>
+              <span class="profile-tag">Stage Focus</span>
+              <span class="profile-tag">WinWin's Choice</span>
+              <span class="profile-tag">Fan Project</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline">
+          <h3 class="timeline-title">Career Timeline</h3>
+          <div class="timeline-list">
+            ${d.career.map(c => `
+              <div class="timeline-item">
+                <div class="timeline-year">${c.year}</div>
+                <div class="timeline-event">${c.event}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="filmography">
+          <h3 class="filmography-title">Filmography</h3>
+          <table>
+            <thead><tr><th>Year</th><th>Type</th><th>Title</th><th>Role</th></tr></thead>
+            <tbody>
+              ${d.works.map(w => `
+                <tr><td>${w.year}</td><td>${w.type}</td><td>${w.title}</td><td>${w.role}</td></tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  /* ========== RENDER: GUESTBOOK ========== */
+  function renderGuestbookPage(app) {
+    app.innerHTML = `
+      <div class="page container page-enter">
+        <div class="breadcrumb">
+          <a onclick="navigateTo('home')">Home</a><span class="sep">/</span>
+          <a onclick="navigateTo('about','profile')">About</a><span class="sep">/</span>
+          <span>Guestbook</span>
+        </div>
+        <div class="guestbook">
+          <h2 class="guestbook-title">Guestbook 留言板</h2>
+          <p style="color:var(--text-secondary);margin-bottom:20px;font-size:.9rem">Leave a message for WinWin &#x1F499;</p>
+          <div class="guestbook-form">
+            <input class="guestbook-input" id="guestbookInput" type="text" placeholder="Write something..." maxlength="200" />
+            <button class="guestbook-submit" onclick="submitGuestbook()">Send</button>
+          </div>
+          <div class="guestbook-messages" id="guestbookMessages">
+            ${guestbookMessages.map(m => `
+              <div class="guestbook-msg">
+                <div class="guestbook-msg-text">${m.text}</div>
+                <div class="guestbook-msg-time">${m.time}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  /* ========== FOOTER ========== */
+  function renderFooter() {
+    return `
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div class="footer-logo">WIN<span>WIN</span> Fan Hub</div>
+          <div class="footer-social">
+            ${SOCIAL_LINKS.map(s => `
+              <a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}" title="${s.name}">${s.icon}</a>
+            `).join('')}
+          </div>
+          <div class="footer-disclaimer">
+            <strong>WINWIN Fan Hub 免责声明 / Disclaimer</strong><br>
+            本站仅为粉丝自制非盈利个人网站，不含有任何商业盈利行为。本站所有资源均来自网络收集，仅供同好交流分享。本站与董思成（WinWin）所属经纪公司（SM Entertainment）及国内官方工作室无任何官方或商业关联。<br><br>
+            Disclaimer: This is a non-profit website fan-made exclusively for WinWin (Dong Sicheng). It is strictly for entertainment, archival, and fan-sharing purposes. This website is not affiliated with, endorsed by, managed by, or in any way officially connected to SM Entertainment or his official sub-labels/management studios.
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; 2026 WINWIN Fan Hub. All rights reserved.</span>
+            <a onclick="navigateTo('about','guestbook')">Guestbook 留言</a>
+          </div>
+        </div>
+      </footer>
+    `;
+  }
+
+  /* ========== GUESTBOOK LOGIC ========== */
+  function submitGuestbook() {
+    const input = document.getElementById('guestbookInput');
+    if (!input || !input.value.trim()) return;
+    guestbookMessages.unshift({
+      text: input.value.trim(),
+      time: new Date().toLocaleString('zh-CN')
+    });
+    renderGuestbookPage(document.getElementById('app'));
+  }
+
+  /* ========== HERO: Video play once + mouse follow ========== */
+  function initHero() {
+    const hero = document.getElementById('hero');
+    const videoWrap = document.getElementById('heroVideo');
+    if (!hero || !videoWrap) return;
+    setTimeout(() => hero.classList.add('loaded'), 100);
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      videoWrap.style.transform = `translate(${x * 20}px, ${y * 20}px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+    });
+    hero.addEventListener('mouseleave', () => {
+      videoWrap.style.transform = 'translate(0,0) rotateY(0) rotateX(0)';
+    });
+  }
+
+  function initHeroVideo() {
+    const vid = document.getElementById('heroVid');
+    const wrap = document.getElementById('heroVideo');
+    if (vid && wrap) {
+      vid.addEventListener('ended', () => {
+        wrap.classList.add('video-ended');
+      });
+    }
+  }
+
+  /* ========== FULL-SCREEN GALLERY VIEWER ========== */
+  function openGV(key, startIdx) {
+    const data = CONTENT[key];
+    if (!data || !data.images) return;
+    gvKey = key;
+    gvImages = data.images;
+    gvIndex = startIdx || 0;
+    updateGV();
+    document.getElementById('galleryViewer').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function openGVFromHome(key, globalIdx) {
+    const data = CONTENT[key];
+    if (!data || !data.images) return;
+    gvKey = key;
+    gvImages = data.images;
+    const imgSrc = ALL_GALLERY_IMAGES[globalIdx].src;
+    gvIndex = data.images.findIndex(im => im.src === imgSrc);
+    if (gvIndex < 0) gvIndex = 0;
+    updateGV();
+    document.getElementById('galleryViewer').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeGV() {
+    document.getElementById('galleryViewer').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function gvNav(dir) {
+    gvIndex = (gvIndex + dir + gvImages.length) % gvImages.length;
+    updateGV();
+  }
+  function updateGV() {
+    const img = document.getElementById('gvImg');
+    const caption = document.getElementById('gvCaption');
+    const thumbs = document.getElementById('gvThumbs');
+    const side = document.getElementById('gvSide');
+
+    img.src = gvImages[gvIndex].src;
+    img.alt = gvImages[gvIndex].labelZh || '';
+    const en = gvImages[gvIndex].labelEn || '';
+    const zh = gvImages[gvIndex].labelZh || '';
+    caption.innerHTML = `<span class="gv-en">${en}</span><span class="gv-zh">${zh}</span>`;
+
+    // Thumbnails
+    thumbs.innerHTML = gvImages.map((im, i) => `
+      <div class="gv-thumb ${i === gvIndex ? 'active' : ''}" onclick="gvIndex=${i};updateGV()">
+        <img src="${im.src}" alt="" loading="lazy" />
+      </div>
+    `).join('');
+
+    // Scroll active thumb into view
+    setTimeout(() => {
+      const activeThumb = thumbs.querySelector('.gv-thumb.active');
+      if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }, 50);
+
+    // Side nav
+    side.innerHTML = GALLERY_CARDS.map(c => `
+      <div class="gv-side-item ${c.key === gvKey ? 'active' : ''}" onclick="switchGVCategory('${c.key}')">
+        <span class="gv-side-en">${c.name}</span>
+        <span class="gv-side-zh">${c.nameZh}</span>
+      </div>
+    `).join('');
+  }
+  function switchGVCategory(key) {
+    const data = CONTENT[key];
+    if (!data || !data.images) return;
+    gvKey = key;
+    gvImages = data.images;
+    gvIndex = 0;
+    updateGV();
+  }
+  function gvDownloadImage() {
+    const url = gvImages[gvIndex].src;
+    const label = gvImages[gvIndex].labelZh || 'winwin';
+    downloadImage(url, label);
+  }
+
+  // Touch swipe for GV
+  (function() {
+    let startX = 0;
+    document.addEventListener('touchstart', (e) => {
+      const gv = document.getElementById('galleryViewer');
+      if (!gv || !gv.classList.contains('active')) return;
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const gv = document.getElementById('galleryViewer');
+      if (!gv || !gv.classList.contains('active')) return;
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 50) gvNav(diff > 0 ? -1 : 1);
+    }, { passive: true });
+  })();
+
+  // Keyboard nav for GV
+  document.addEventListener('keydown', (e) => {
+    const gv = document.getElementById('galleryViewer');
+    if (gv && gv.classList.contains('active')) {
+      if (e.key === 'ArrowLeft') gvNav(-1);
+      if (e.key === 'ArrowRight') gvNav(1);
+      if (e.key === 'Escape') closeGV();
+    }
+  });
+
+  /* ========== DOWNLOAD ========== */
+  function downloadImage(url, filename) {
+    fetch(url)
+      .then(r => r.blob())
+      .then(blob => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = (filename || 'winwin') + '.jpg';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      })
+      .catch(() => window.open(url, '_blank'));
+  }
+
+  /* ========== INFINITE SCROLL GALLERY ========== */
+  function initInfiniteScroll() {
+    const wrap = document.getElementById('galleryScrollWrap');
+    const track = document.getElementById('galleryScrollTrack');
+    if (!wrap || !track) return;
+
+    let speed = 0.5;
+    let paused = false;
+    let pos = 0;
+    const halfWidth = track.scrollWidth / 2;
+
+    wrap.addEventListener('mouseenter', () => paused = true);
+    wrap.addEventListener('mouseleave', () => paused = false);
+
+    function step() {
+      if (!paused) {
+        pos += speed;
+        if (pos >= halfWidth) pos -= halfWidth;
+        track.style.transform = `translateX(-${pos}px)`;
+      }
+      infiniteScrollRAF = requestAnimationFrame(step);
+    }
+    infiniteScrollRAF = requestAnimationFrame(step);
+  }
+
+  /* ========== DROPDOWNS (hover-based with delay) ========== */
+  let dropdownTimers = {};
+  function closeAllDropdowns() {
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+    document.querySelectorAll('.nav-menu-item').forEach(b => b.classList.remove('dropdown-active'));
+  }
+
+  document.querySelectorAll('.nav-menu-item.has-dropdown').forEach(item => {
+    const dd = item.querySelector('.dropdown');
+    const ddName = item.getAttribute('data-dropdown');
+    if (!dd) return;
+
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(dropdownTimers[ddName]);
+      closeAllDropdowns();
+      dd.classList.add('open');
+      item.classList.add('dropdown-active');
+    });
+    item.addEventListener('mouseleave', () => {
+      dropdownTimers[ddName] = setTimeout(() => {
+        dd.classList.remove('open');
+        item.classList.remove('dropdown-active');
+      }, 200);
+    });
+
+    // Keep dropdown open when mouse enters the dropdown itself
+    dd.addEventListener('mouseenter', () => {
+      clearTimeout(dropdownTimers[ddName]);
+    });
+    dd.addEventListener('mouseleave', () => {
+      dropdownTimers[ddName] = setTimeout(() => {
+        dd.classList.remove('open');
+        item.classList.remove('dropdown-active');
+      }, 200);
+    });
+  });
+
+  // Close dropdowns when clicking outside nav area
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav')) closeAllDropdowns();
+  });
+
+  /* ========== NAVBAR SCROLL ========== */
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ========== SEARCH ========== */
+  function toggleSearch() {
+    const overlay = document.getElementById('searchOverlay');
+    overlay.classList.toggle('active');
+    if (overlay.classList.contains('active')) {
+      document.getElementById('searchInput').focus();
+    }
+  }
+  function handleSearch(q) {
+    const results = document.getElementById('searchResults');
+    if (!q || q.length < 1) { results.innerHTML = ''; return; }
+    const ql = q.toLowerCase();
+    let found = [];
+    Object.entries(CONTENT).forEach(([key, cat]) => {
+      if (cat.items) {
+        cat.items.forEach(item => {
+          if (item.title.toLowerCase().includes(ql) || item.intro.toLowerCase().includes(ql)) {
+            found.push({ title: item.title, desc: item.intro, type: 'category', key });
+          }
+        });
+      }
+      if (cat.images) {
+        cat.images.forEach(img => {
+          const zh = img.labelZh || img.label || '';
+          const en = img.labelEn || '';
+          if (zh.toLowerCase().includes(ql) || en.toLowerCase().includes(ql)) {
+            found.push({ title: zh, desc: cat.title + ' ' + cat.subtitle, type: 'gallery', key });
+          }
+        });
+      }
+    });
+    ABOUT_DATA.works.forEach(w => {
+      if (w.title.toLowerCase().includes(ql) || w.role.toLowerCase().includes(ql)) {
+        found.push({ title: w.title + ' — ' + w.role, desc: w.type + ' · ' + w.year, type: 'about', key: 'profile' });
+      }
+    });
+    results.innerHTML = found.length === 0
+      ? '<div style="color:var(--muted);font-size:.88rem;padding:8px">No results found.</div>'
+      : found.slice(0, 12).map(r => `
+        <div class="search-result" onclick="navigateTo('${r.type}','${r.key}');toggleSearch();">
+          <div class="search-result-title">${r.title}</div>
+          <div class="search-result-desc">${r.desc}</div>
+        </div>
+      `).join('');
+  }
+
+  /* ========== MOBILE NAV ========== */
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('active');
+  }
+
+  /* ========== SCROLL REVEAL ========== */
+  function initReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  /* ========== INIT ========== */
+  handleRoute();
+  </script>
+</body>
+</html>
