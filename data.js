@@ -1,8 +1,8 @@
 /* =============================================
-   DATA.JS — WinWin Fan Hub Content Data
-   All content based on Baidu Baike & user updates
-   Bilingual: English + Chinese
-   ============================================= */
+    DATA.JS — WinWin Fan Hub Content Data
+    All content based on Baidu Baike & user updates
+    Bilingual: English + Chinese
+    ============================================= */
 
 const CONTENT = {
   'tv-series': {
@@ -13,7 +13,7 @@ const CONTENT = {
     items: [
       { title: '五福临门', cover: 'https://q8.itc.cn/q_70/images03/20250822/14f9005eb4ba4aa2ad7b58b2c7b591f9.jpeg', url: 'https://www.mgtv.com/h/617394.html', intro: '角色：杨羡（领衔主演）| 2025 古装轻喜剧' },
       { title: '良陈美锦', cover: 'https://q3.itc.cn/images01/20260530/4432da1492064b6ab46966621d673ce9.jpeg', url: 'https://www.mgtv.com/h/749276.html', intro: '角色：叶限（领衔主演）| 2026 古装宅斗' },
-      { title: '子夜归', cover: 'https://q9.itc.cn/q_70/images03/20250822/ae3774d5b52849efa034d69f25b62dbc.jpeg', url: 'https://v.qq.com/x/cover/mzc002009y0nzq8/z4101m43ng6.html?ptag=bing.com', intro: '角色：蝠朝（友情出演）| 2025 古装奇幻爱情' },
+      { title: '子夜归', cover: 'https://q9.itc.cn/q_70/images03/20250822/ae3774d5b52849efa034d69f25b62dbc.jpeg', url: 'https://v.qq.com/x/cover/mzc002009y0nzq8/z4101m43ng6.html?ptag=bing.com', intro: '角色：蝠朝（主演）| 2025 古装奇幻' },
       { title: '冰雪谣', cover: 'images/ice1.jpg', url: 'https://v.qq.com/x/cover/mzc00200ckgcb17/g41006kc47f.html', intro: '角色：司徒威涟（主演）| 2024 民国奇幻' },
       { title: '25小时恋爱', cover: 'images/25hours.jpg', url: 'https://v.qq.com/x/cover/mzc0020035bn9hl/s0046k050t1.html', intro: '角色：言樾（领衔主演）| 2023 青春爱情' },
       { title: '恰逢春', cover: 'https://img-s.msn.cn/tenant/amp/entityid/AA24kG9C.img?w=768&h=1152&m=6&x=348&y=306&s=138&d=138', url: '#', intro: '角色：许凤佳（主演）| 待播 古装爱情' },
@@ -30,9 +30,9 @@ const CONTENT = {
     items: [
       { title: '五十公里桃花坞5', cover: 'images/thw5.jpg', url: 'https://v.qq.com/x/cover/mzc002005od4txd/b4101hnrvpz.html', intro: '常驻嘉宾 | 腾讯视频' },
       { title: '风华合伙人', cover: 'images/gallery/huod1.jpg', url: 'https://www.iqiyi.com/v_k86lvximww.html?vfrm=pcw_album_auto&rfr=https://www.google.com/', intro: '参演 | 2026 浙江卫视' },
-      { title: '奔跑吧9第十期', cover: 'https://bkimg.cdn.bcebos.com/pic/4610b912c8fcc3cec3fd2a30491cc188d43f87948a24?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080', url: 'https://www.bilibili.com/list/28735050?oid=113623225604019&bvid=BV1ePqNYKEkC', intro: '参演 | 2021 浙江卫视' },
+      { title: '奔跑吧9第十期', cover: 'https://bkimg.cdn.bcebos.com/pic/4610b912c8fcc3cec3fd2a30491cc188d43f87948a24?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5', url: 'https://www.mgtv.com/h/301817.html', intro: '节目合作 | 2021' },
       { title: '我们的师父', cover: 'images/gallery/shifu.jpg', url: 'https://www.mgtv.com/h/328612.html', intro: '常驻嘉宾 | 2019 湖南卫视' },
-      { title: '少年威计划', cover: 'https://bkimg.cdn.bcebos.com/pic/b8014a90f603738d76372158bc1bb051f819ec4f?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080', url: 'https://v.youku.com/v_show/id_XNDI2OTM1NzA0OA==.html?&s=bdaa13d56dc24a85b8a5', intro: '参演 | 2019' },
+      { title: '少年威计划', cover: 'https://bkimg.cdn.bcebos.com/pic/b8014a90f603738d76372158bc1bb051f819ec4f?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5', url: 'https://v.qq.com/x/cover/mzc002005od4txd/b4101hnrvpz.html', intro: '舞台节目 | 2021' },
       { title: '天天向上', cover: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80', url: 'https://www.mgtv.com/h/301817.html', intro: '多次参演 | 湖南卫视' },
       { title: '快乐大本营', cover: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80', url: 'https://www.mgtv.com/h/301817.html', intro: '参演 | 湖南卫视' }
     ]
@@ -48,8 +48,8 @@ const CONTENT = {
       { title: 'Nectar 月之迷', cover: 'images/wutai2.jpg', url: 'https://www.bilibili.com/video/BV1b5411J7Vs/', intro: 'WayV 中国舞直拍' },
       { title: "90's Love 直拍", cover: 'images/idol1.jpg', url: 'https://www.bilibili.com/video/BV14K411V7R3/?vd_source=cfda92431199fa7857dcaa826dc5b0f4', intro: 'NCT U 白衣直拍' },
       { title: 'Bad Alive 直拍', cover: 'images/idol2.jpg', url: 'https://www.bilibili.com/video/BV13k4y1m7tR/?vd_source=cfda92431199fa7857dcaa826dc5b0f4', intro: 'WayV 4K Face Cam' },
-      { title: 'Lovely 现代舞', cover: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80', url: 'https://www.bilibili.com/video/BV1EJ411N7W6/?vd_source=cfda92431199fa7857dcaa826dc5b0f4', intro: 'WayV 舞台直拍' },
-      { title: 'Kick Back 练习室', cover: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80', url: 'https://www.bilibili.com/video/BV12w411R7nU/?vd_source=cfda92431199fa7857dcaa826dc5b0f4', intro: 'WayV 练习室直拍' },
+      { title: 'Lovely 现代舞', cover: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80', url: 'https://www.bilibili.com/video/BV1EJ411N7W6/?vd_source=cfda92431199fa7857dcaa826dc5b0f4', intro: '现场舞台直拍' },
+      { title: 'Kick Back 练习室', cover: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80', url: 'https://www.bilibili.com/video/BV12w411R7nU/?vd_source=cfda92431199fa7857dcaa826dc5b0f4', intro: '舞台练习片段' },
       { title: 'Regular 舞台', cover: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&q=80', url: 'https://www.bilibili.com/video/BV1YJ411N7X8/', intro: 'NCT 127 舞台直拍' }
     ]
   },
@@ -90,7 +90,7 @@ const CONTENT = {
   'guzhuang': {
     title: 'Period Costume',
     subtitle: '古装',
-    desc: '从杨羡到叶限，古装造型下的WinWin如画中人。',
+    desc: '从杨羡到叶限，古装造型���的WinWin如画中人。',
     cover: 'https://q9.itc.cn/q_70,c_zoom,h_1200/images01/20240112/faef4f4f26cc4500bcdb91393dc1f856.jpeg',
     images: [
       { src: 'https://q8.itc.cn/q_70/images03/20250822/14f9005eb4ba4aa2ad7b58b2c7b591f9.jpeg', labelZh: '五福临门·杨羡', labelEn: 'Five Blessings · Yang Xian' },
@@ -98,8 +98,8 @@ const CONTENT = {
       { src: 'https://q9.itc.cn/q_70/images03/20250822/ae3774d5b52849efa034d69f25b62dbc.jpeg', labelZh: '子夜归·蝠朝', labelEn: 'Midnight Return · Fu Zhao' },
       { src: 'https://img-s.msn.cn/tenant/amp/entityid/AA24kG9C.img?w=768&h=1152&m=6&x=348&y=306&s=138&d=138', labelZh: '恰逢春·许凤佳', labelEn: 'Meeting Spring · Xu Fengjia' },
       { src: 'images/mycm1.jpg', labelZh: '明月苍茫·莫提准', labelEn: 'Bright Moon · Mo Tizhun' },
-{ src: 'images/gallery/gufeng.jpg', labelZh: '古装写真', labelEn: 'Period Costume Portrait' },
-{ src: 'images/gallery/gufeng1.jpg', labelZh: '古装写真', labelEn: 'Period Costume Portrait' },
+      { src: 'images/gallery/gufeng.jpg', labelZh: '古装写真', labelEn: 'Period Costume Portrait' },
+      { src: 'images/gallery/gufeng1.jpg', labelZh: '古装写真', labelEn: 'Period Costume Portrait' },
       { src: 'https://q3.itc.cn/q_70,c_zoom,h_1200/images01/20240112/4ff45e8910f94d3683ccb7789a74b9cd.jpeg', labelZh: '古装写真', labelEn: 'Period Costume Portrait' }
     ]
   },
@@ -159,13 +159,13 @@ const ABOUT_DATA = {
   stageName: 'WINWIN',
   birthday: '1997.10.28',
   birthplace: '浙江温州',
-  agency: 'SM Entertainment',
+  agency: '',
   group: 'NCT / WayV',
   education: '中央戏剧学院 表演系',
   height: '182cm',
   mbti: 'INFP',
-photo:'images/gallery/zipai6.jpg',
-  profile: '董思成（WINWIN），1997年10月28日出生于浙江省温州市，中国男演员、歌手。2015年考入中央戏剧学院表演系，2016年作为NCT成员正式出道，2019年随小分队WayV在中国出道。凭借出众的舞蹈功底（中国舞、现代舞）和清俊外形，在舞台上留下无数经典瞬间。2023年起转型演员，先后领衔主演《25小时恋爱》《五福临门》《良陈美锦》等多部热播剧集，并主演电影《镖人：风起大漠》，票房突破14.48亿。',
+  photo: 'images/gallery/zipai6.jpg',
+  profile: '董思成（WINWIN），1997年10月28日出生于浙江省温州市，中国男演员、歌手。2015年考入中央戏剧学院表演系，2016年作为NCT成员正式出道，2019年以WayV成员展开中国舞台活动。',
   career: [
     { year: '2015', event: '考入中央戏剧学院表演系' },
     { year: '2016.01', event: '作为NCT 127成员正式出道，发布《NCT #127》' },
@@ -215,7 +215,7 @@ const UPCOMING_WORKS = [
 /* Category cards for home/categories page */
 const CATEGORY_CARDS = [
   { key: 'tv-series', label: 'Drama', name: 'TV Series', nameZh: '影视剧', count: '9 Works', cover: 'https://q8.itc.cn/q_70/images03/20250822/14f9005eb4ba4aa2ad7b58b2c7b591f9.jpeg' },
-  { key: 'variety-shows', label: 'Entertainment', name: 'Variety Shows', nameZh: '综艺节目', count: '7+ Shows', cover: 'http://k.sinaimg.cn/n/sinakd20114/696/w596h900/20220713/3a40-4306a0ab02abc0cff5aa49fee048e31e.jpg/w700d1q75cms.jpg?by=cms_fixed_width' },
+  { key: 'variety-shows', label: 'Entertainment', name: 'Variety Shows', nameZh: '综艺节目', count: '7+ Shows', cover: 'http://k.sinaimg.cn/n/sinakd20114/696/w596h900/20220713/3a40-4306a0ab02bfe30.jpg' },
   { key: 'stage-focus', label: 'Performance', name: 'Stage Focus', nameZh: '舞台直拍', count: '8+ Stages', cover: 'images/fm2.jpg' },
   { key: 'interview', label: 'Conversation', name: 'Interview', nameZh: '采访对话', count: '6+ Interviews', cover: 'images/fm3.jpg' },
   { key: 'fan-made', label: 'Creation', name: 'Fan-made', nameZh: '粉丝创作', count: '6+ Creations', cover: 'images/fm4.jpg' }
